@@ -29,17 +29,16 @@ function App() {
           <h1>Movie App 2</h1>
           <div>
             {movies.map((movie) => (
-              <div key={movie.id}>
-                <img src={movie.medium_cover_image} alt={movie.title}/>
-                <h2>{movie.title}</h2>
-                <p>{movie.summary}</p>
-                <ul>
-                  {movie.genres.map((g) => (
-                    <li key={g}>{g}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              <Movie 
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              summary={movie.summary}
+              genres={movie.genres}
+              img={movie.medium_cover_image}/>
+            )
+              
+            )}
           </div>
         </div>
       )}
