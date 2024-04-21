@@ -12,6 +12,7 @@ function App() {
       )
     ).json();
     setMovies(json.data.movies);
+    //movie가 아니라 movies.....
     setLoading(false);
   };
   useEffect(() => {
@@ -27,14 +28,18 @@ function App() {
         <div>
           <h1>Movie App 2</h1>
           <div>
-            {movies.map((m) => {
-              <Movie
-              // key={}
-              // id={}
-              // year={}
-              // coverImg={}
-              />;
-            })}
+            {movies.map((movie) => (
+              <div key={movie.id}>
+                <img src={movie.medium_cover_image} alt={movie.title}/>
+                <h2>{movie.title}</h2>
+                <p>{movie.summary}</p>
+                <ul>
+                  {movie.genres.map((g) => (
+                    <li key={g}>{g}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       )}
