@@ -19,6 +19,7 @@ function Movie({ id, title, summary, genres, img }) {
 }
 
 Movie.propTypes = {
+  id:PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,

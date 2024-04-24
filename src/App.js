@@ -7,8 +7,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path=".movie/:id" element={<Detail />} />
-        <Route path="*" element={<h1>Not Found Page</h1>}></Route>
+        <Route path="/movie/:iddd" element={<Detail />} />
+        {/* id대신에 원하는 단어로 쓸 수 있다(변수라서 맘대로 지정 가능) */}
+        <Route path="*" element={<h1>Not Found Page</h1>}/>
       </Routes>
     </Router>
   );
