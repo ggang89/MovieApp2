@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 
 export default function Detail() {
@@ -10,18 +10,19 @@ export default function Detail() {
   const [movie, setMovie] = useState({});
   const [genres, setGenres] = useState([]);
 
-  useEffect(() => {
-    const getMovie = async () => {
-      const json = await (
-        await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${iddd}`)
-      ).json();
-      //갑자기 저 주소가 어디서 나온지 모르겠다
-      console.log(json);
-      setMovie(json.data.movie);
-      setGenres(json.data.movie.genres);
-    };
-    getMovie();
+  const getMovie = useCallback(async () => {
+    const json = await (
+      await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${iddd}`)
+    ).json();
+    //갑자기 저 주소가 어디서 나온지 모르겠다
+    console.log(json);
+    setMovie(json.data.movie);
+    setGenres(json.data.movie.genres);
   }, [iddd]);
+
+  useEffect(() => {
+    getMovie();
+  }, [getMovie]);
 
   return (
     <>
