@@ -21,13 +21,13 @@ export default function Home() {
   console.log(movies);
 
   return (
-    <div>
+    <div className="contentBox">
       {loading ? (
         <h2>Loading...</h2>
       ) : (
         <div>
           <h1>Movie App 2</h1>
-          <div>
+          <div >
             {movies.map((movie) => (
               <Movie
                 key={movie.id}
