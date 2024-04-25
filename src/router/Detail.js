@@ -8,20 +8,20 @@ export default function Detail() {
   console.log(iddd);
 
   const [movie, setMovie] = useState({});
-
-  const getMovie = async () => {
-    const json = await (
-      await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${iddd}`)
-    ).json();
-    //갑자기 저 주소가 어디서 나온지 모르겠다
-    console.log(json);
-    setMovie(json.data.movie);
-    setGenres(json.data.movie.genres);
-  };
   const [genres, setGenres] = useState([]);
+
   useEffect(() => {
+    const getMovie = async () => {
+      const json = await (
+        await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${iddd}`)
+      ).json();
+      //갑자기 저 주소가 어디서 나온지 모르겠다
+      console.log(json);
+      setMovie(json.data.movie);
+      setGenres(json.data.movie.genres);
+    };
     getMovie();
-  }, []);
+  }, [iddd]);
 
   return (
     <>
